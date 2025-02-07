@@ -164,3 +164,4 @@ D:\ЖЕНЯ\Обучение\ITStep\Lesson\2025\ASP.NET\PizzaMVCProject\PizzaMVC
 D:\ЖЕНЯ\Обучение\ITStep\Lesson\2025\ASP.NET\PizzaMVCProject\PizzaMVCProject\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\ЖЕНЯ\Обучение\ITStep\Lesson\2025\ASP.NET\PizzaMVCProject\PizzaMVCProject\obj\Debug\net9.0\PizzaMVCProject.csproj.AssemblyReference.cache
 D:\ЖЕНЯ\Обучение\ITStep\Lesson\2025\ASP.NET\PizzaMVCProject\PizzaMVCProject\obj\Debug\net9.0\PizzaMVC.CBDC421B.Up2Date
+D:\ЖЕНЯ\Обучение\ITStep\Lesson\2025\ASP.NET\PizzaMVCProject\PizzaMVCProject\obj\Debug\net9.0\PizzaMVCProject.sourcelink.json
