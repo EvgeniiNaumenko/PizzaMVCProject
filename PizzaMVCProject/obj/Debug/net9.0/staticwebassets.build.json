@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kUp89suqZkfGi5rK4Uqwsjd4piIbhryr56aY3aeVJpg=",
+  "Hash": "nqjVbKcvQh9FL8P1JVPR6marXSYdLpcefB9NrOYp35I=",
   "Source": "PizzaMVCProject",
   "BasePath": "_content/PizzaMVCProject",
   "Mode": "Default",
@@ -311,12 +311,12 @@
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-sl8xqqvs31.gz",
+      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-nat59dgge8.gz",
       "SourceId": "PizzaMVCProject",
       "SourceType": "Computed",
       "ContentRoot": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/PizzaMVCProject",
-      "RelativePath": "PizzaMVCProject#[.{fingerprint=sl8xqqvs31}]!.bundle.scp.css.gz",
+      "RelativePath": "PizzaMVCProject#[.{fingerprint=nat59dgge8}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -325,8 +325,8 @@
       "RelatedAsset": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PizzaMVCProject.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ku9v8epplk",
-      "Integrity": "ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=",
+      "Fingerprint": "6wscn8r6ut",
+      "Integrity": "uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PizzaMVCProject.bundle.scp.css"
@@ -437,12 +437,12 @@
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-sl8xqqvs31.gz",
+      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-nat59dgge8.gz",
       "SourceId": "PizzaMVCProject",
       "SourceType": "Computed",
       "ContentRoot": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/PizzaMVCProject",
-      "RelativePath": "PizzaMVCProject#[.{fingerprint=sl8xqqvs31}]?.styles.css.gz",
+      "RelativePath": "PizzaMVCProject#[.{fingerprint=nat59dgge8}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -451,8 +451,8 @@
       "RelatedAsset": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\PizzaMVCProject.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ku9v8epplk",
-      "Integrity": "ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=",
+      "Fingerprint": "6wscn8r6ut",
+      "Integrity": "uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\PizzaMVCProject.styles.css"
@@ -1543,8 +1543,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "sl8xqqvs31",
-      "Integrity": "0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=",
+      "Fingerprint": "nat59dgge8",
+      "Integrity": "jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\PizzaMVCProject.styles.css"
@@ -1564,8 +1564,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "sl8xqqvs31",
-      "Integrity": "0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=",
+      "Fingerprint": "nat59dgge8",
+      "Integrity": "jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PizzaMVCProject.bundle.scp.css"
@@ -4448,12 +4448,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Drink.png",
+      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\drink.png",
       "SourceId": "PizzaMVCProject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\",
       "BasePath": "_content/PizzaMVCProject",
-      "RelativePath": "productFiles/Drink#[.{fingerprint}]?.png",
+      "RelativePath": "productFiles/drink#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4466,15 +4466,15 @@
       "Integrity": "6Dd9LEwJuW/c3X6xfcE3XM5/rJlZQOoec/gQuHdZbG8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\productFiles\\Drink.png"
+      "OriginalItemSpec": "wwwroot\\productFiles\\drink.png"
     },
     {
-      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Pizza.jpg",
+      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\pizza.jpg",
       "SourceId": "PizzaMVCProject",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\",
       "BasePath": "_content/PizzaMVCProject",
-      "RelativePath": "productFiles/Pizza#[.{fingerprint}]?.jpg",
+      "RelativePath": "productFiles/pizza#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4487,7 +4487,28 @@
       "Integrity": "w8MeagEz500ftvLYAK3SsCCkiJuWWJKMO7AyZswSuXI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\productFiles\\Pizza.jpg"
+      "OriginalItemSpec": "wwwroot\\productFiles\\pizza.jpg"
+    },
+    {
+      "Identity": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\salad.jpg",
+      "SourceId": "PizzaMVCProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\",
+      "BasePath": "_content/PizzaMVCProject",
+      "RelativePath": "productFiles/salad#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5chwh6stgm",
+      "Integrity": "xailkvXwUsICXpEB/YUYnZABGZz8jxnrDz7UCOvQfoc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\productFiles\\salad.jpg"
     }
   ],
   "Endpoints": [
@@ -30847,12 +30868,12 @@
     },
     {
       "Route": "PizzaMVCProject.bundle.scp.css",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-sl8xqqvs31.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-nat59dgge8.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001831501832"
+          "Quality": "0.001838235294"
         }
       ],
       "ResponseHeaders": [
@@ -30862,15 +30883,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -30890,13 +30911,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "W/\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
@@ -30911,7 +30932,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1174"
         },
         {
           "Name": "Content-Type",
@@ -30919,11 +30940,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -30933,13 +30954,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
       "Route": "PizzaMVCProject.bundle.scp.css.gz",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-sl8xqqvs31.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-nat59dgge8.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -30948,7 +30969,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "Content-Type",
@@ -30956,11 +30977,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -30978,18 +30999,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo="
+          "Value": "sha256-uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.bundle.scp.css",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-sl8xqqvs31.gz",
+      "Route": "PizzaMVCProject.nat59dgge8.bundle.scp.css",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-nat59dgge8.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001831501832"
+          "Quality": "0.001838235294"
         }
       ],
       "ResponseHeaders": [
@@ -30999,15 +31020,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31027,13 +31048,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "W/\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31041,12 +31062,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.bundle.scp.css",
+      "Route": "PizzaMVCProject.nat59dgge8.bundle.scp.css",
       "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PizzaMVCProject.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -31056,7 +31077,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1174"
         },
         {
           "Name": "Content-Type",
@@ -31064,11 +31085,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31078,7 +31099,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31086,13 +31107,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.bundle.scp.css.gz",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-sl8xqqvs31.gz",
+      "Route": "PizzaMVCProject.nat59dgge8.bundle.scp.css.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\5zjhvf3zne-nat59dgge8.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31101,7 +31122,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "Content-Type",
@@ -31109,11 +31130,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31131,7 +31152,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31139,18 +31160,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo="
+          "Value": "sha256-uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.styles.css",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-sl8xqqvs31.gz",
+      "Route": "PizzaMVCProject.nat59dgge8.styles.css",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-nat59dgge8.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001831501832"
+          "Quality": "0.001838235294"
         }
       ],
       "ResponseHeaders": [
@@ -31160,15 +31181,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31188,13 +31209,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "W/\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31202,12 +31223,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.styles.css",
+      "Route": "PizzaMVCProject.nat59dgge8.styles.css",
       "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\PizzaMVCProject.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -31217,7 +31238,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1174"
         },
         {
           "Name": "Content-Type",
@@ -31225,11 +31246,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31239,7 +31260,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31247,13 +31268,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
-      "Route": "PizzaMVCProject.sl8xqqvs31.styles.css.gz",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-sl8xqqvs31.gz",
+      "Route": "PizzaMVCProject.nat59dgge8.styles.css.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-nat59dgge8.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31262,7 +31283,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "Content-Type",
@@ -31270,11 +31291,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31292,7 +31313,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8xqqvs31"
+          "Value": "nat59dgge8"
         },
         {
           "Name": "label",
@@ -31300,18 +31321,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo="
+          "Value": "sha256-uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A="
         }
       ]
     },
     {
       "Route": "PizzaMVCProject.styles.css",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-sl8xqqvs31.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-nat59dgge8.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001831501832"
+          "Quality": "0.001838235294"
         }
       ],
       "ResponseHeaders": [
@@ -31321,15 +31342,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31349,13 +31370,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "W/\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
@@ -31370,7 +31391,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1174"
         },
         {
           "Name": "Content-Type",
@@ -31378,11 +31399,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY=\""
+          "Value": "\"jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31392,13 +31413,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0JvvDeASRMBmkYZkAe6EOIiAvc2mIqq3Eu6bH53S+QY="
+          "Value": "sha256-jyBY6V3Tf/kXu+9bndGh7FNGnmlRWArpC1PUCmQojUY="
         }
       ]
     },
     {
       "Route": "PizzaMVCProject.styles.css.gz",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-sl8xqqvs31.gz",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\compressed\\9785gd5l41-nat59dgge8.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31407,7 +31428,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "545"
+          "Value": "543"
         },
         {
           "Name": "Content-Type",
@@ -31415,11 +31436,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo=\""
+          "Value": "\"uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 31 Jan 2025 16:39:06 GMT"
+          "Value": "Thu, 20 Feb 2025 12:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31437,13 +31458,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZOzloda5ZeSuExjGG7QX+QFbpRcgGhahcyUeV3KYcjo="
+          "Value": "sha256-uhuGxL/pj+vb3yfBSFE9Gvm4rtd4UHL7NH7pvNMEm+A="
         }
       ]
     },
     {
-      "Route": "productFiles/Drink.0qfmjb9ht4.png",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Drink.png",
+      "Route": "productFiles/drink.0qfmjb9ht4.png",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\drink.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31478,7 +31499,7 @@
         },
         {
           "Name": "label",
-          "Value": "productFiles/Drink.png"
+          "Value": "productFiles/drink.png"
         },
         {
           "Name": "integrity",
@@ -31487,8 +31508,8 @@
       ]
     },
     {
-      "Route": "productFiles/Drink.png",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Drink.png",
+      "Route": "productFiles/drink.png",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\drink.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31524,8 +31545,8 @@
       ]
     },
     {
-      "Route": "productFiles/Pizza.jpg",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Pizza.jpg",
+      "Route": "productFiles/pizza.jpg",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\pizza.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31561,8 +31582,8 @@
       ]
     },
     {
-      "Route": "productFiles/Pizza.nfd31ngorf.jpg",
-      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Pizza.jpg",
+      "Route": "productFiles/pizza.nfd31ngorf.jpg",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\pizza.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -31597,11 +31618,93 @@
         },
         {
           "Name": "label",
-          "Value": "productFiles/Pizza.jpg"
+          "Value": "productFiles/pizza.jpg"
         },
         {
           "Name": "integrity",
           "Value": "sha256-w8MeagEz500ftvLYAK3SsCCkiJuWWJKMO7AyZswSuXI="
+        }
+      ]
+    },
+    {
+      "Route": "productFiles/salad.5chwh6stgm.jpg",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\salad.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8010"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xailkvXwUsICXpEB/YUYnZABGZz8jxnrDz7UCOvQfoc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Feb 2025 15:46:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5chwh6stgm"
+        },
+        {
+          "Name": "label",
+          "Value": "productFiles/salad.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xailkvXwUsICXpEB/YUYnZABGZz8jxnrDz7UCOvQfoc="
+        }
+      ]
+    },
+    {
+      "Route": "productFiles/salad.jpg",
+      "AssetFile": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\salad.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8010"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xailkvXwUsICXpEB/YUYnZABGZz8jxnrDz7UCOvQfoc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Feb 2025 15:46:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xailkvXwUsICXpEB/YUYnZABGZz8jxnrDz7UCOvQfoc="
         }
       ]
     }

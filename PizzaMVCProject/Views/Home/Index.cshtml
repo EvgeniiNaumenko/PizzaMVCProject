@@ -1,147 +1,111 @@
-﻿﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using PizzaMVCProject.Data.Helpers
+﻿﻿@using PizzaMVCProject.Models
+@model IEnumerable<Product>
 
-@{
-	ViewData["Title"] = "Home Page";
+
+<div class="blog-section donuts">
+    <div class="container">
+        <div class="row">
+
+            @await Html.PartialAsync("_ItemsFilter")
+
+            <div id="content" class="col-sm-9  all-blog">
+
+                @* Вывод текущей ViewData category.Name в заголовке  *@
+                <div class="breadcrumb-main">
+                    <div class="breadcrumb-container clearfix">
+                        <h1 class="page-title">@ViewData["Title"]</h1>
+                        <p>@ViewData["Title"]</p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="category-img col-sm-12">
+                        <img src="assets/images/banners/category_banner1.jpg" alt="donuts" title="donuts" class="img-thumbnail">
+                    </div>
+                    <div class="category-desc col-sm-12">
+
+                        <p>
+                            Добро пожаловать в <b>PizzaStar</b> - место, где наслаждение вкусом и качеством встречается с итальянским гостеприимством.
+                            Наша пиццерия - это настоящий рай для любителей пиццы, где вы сможете отведать аутентичные итальянские блюда, приготовленные
+                            с любовью и вниманием к деталям.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="category-info">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-5 category-list-grid">
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" id="grid-view" class="btn btn-default active"
+                                        data-toggle="tooltip" title="" data-original-title="Grid">
+                                    <i class="fa fa-th"></i>
+                                </button>
+                                <button type="button" id="list-view" class="btn btn-default"
+                                        data-toggle="tooltip" title="" data-original-title="List">
+                                    <i class="fa fa-list" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        @* Сортировка через _Sort options / в shared *@
+                        <div class="col-sm-7 col-xs-12 category-sorting">
+                            @{
+                                ViewBag.sorts = new string[] { "Name", "Category.Name", "Price", "Brand", "Calories", "Weight" };
+                            }
+                            @await Html.PartialAsync("_SortOptions", Model)
+                        </div>
+
+                    </div>
+                </div>
+
+                @* Поиск полям чрез _searchoptions в shared *@
+                <div class="category-info">
+                    <div class="input-group themability-search">
+                        @{
+                            ViewBag.searches = new string[] { "Name", "Brand", "Description", "Category.Name" };
+                        }
+                        @await Html.PartialAsync("_SearchOptions", Model)
+                    </div>
+                </div>
+
+                <div class="category-row row">
+
+                    @* Отобраение каждого продукта *@
+                    @foreach (Product product in Model)
+                    {
+                        @await Html.PartialAsync("_Product", product)
+                    }
+
+                    <div id="updateDiv">
+                        <!-- AJAX данные загружать сюда и тут будет _ConfirmModal  -->
+                    </div>
+
+                </div>
+                <div class="pagination-main">
+
+
+                    <div class="text-center">
+                        @await Html.PartialAsync("_Pages", Model)
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
+
+    @*Script for Rating with Stars *@
+    <script src="~/assets/js/rating.js"></script>
+
 }
-
-@model IEnumerable<PizzaMVCProject.ViewModels.ProductViewModel>
-
-<div class="container-full ">
-	<div class="themability-banner box-module ">
-		<div class="block_box">
-			<div>
-				<div class="banner-owl-carousel owl-carousel owl-theme owl-loaded owl-drag">
-					<div class="row-items category-layout col-xs-12">
-						<div class="themability-banner-image">
-							<img src="assets/images/banners/mainbanner1.jpg" alt="Noelle Salar"
-								 class=" img-responsive ">
-						</div>
-					</div>
-					<div class="row-items category-layout col-xs-12">
-						<div class="themability-banner-image">
-							<img src="assets/images/banners/mainbanner2.jpg" alt="Noelle Salar"
-								 class=" img-responsive ">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="service-box  wow fadeInUp top-margin-all  mb-5">
-	<div class="container">
-		<div class="promo-item ">
-			<div class="row">
-				<div class="service-item col-md-3 col-xs-6">
-					<div class="service">
-						<div class=" icon-shipping service-icon-foor"></div>
-						<div class="service-content">
-							<h4 class="promo-title">Free shipping</h4> <span class="promo-desc">
-								On order over
-								$150
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="service-item col-md-3 col-xs-6">
-					<div class="service">
-						<div class=" icon-wallet service-icon-foor"></div>
-						<div class="service-content">
-							<h4 class="promo-title">Cash On Delivery</h4> <span class="promo-desc">
-								100% money back
-								guarantee
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="service-item col-md-3 col-xs-6">
-					<div class="service">
-						<div class="icon-gift service-icon-foor"></div>
-						<div class="service-content">
-							<h4 class="promo-title">Special Gift Card</h4> <span class="promo-desc">
-								Offer special
-								bonuses with gift
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="service-item col-md-3 col-xs-6">
-					<div class="service">
-						<div class="icon-customer-service service-icon-foor"></div>
-						<div class="service-content">
-							<h4 class="promo-title">24/7 customer service</h4> <span class="promo-desc">
-								Call us 24/7
-								at 123-456-789
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container" id="content">
-	<div class="category-info text-start text-light">
-		<div class="row">
-			<div class="col-12 col-md-1 align-content-end category-list-grid">
-				<div class="btn-group btn-group-sm d-flex flex-column">
-					<button type="button" id="grid-view" class="btn btn-default text-start" data-toggle="tooltip" title="" data-original-title="Grid"><i class="icon-grid"></i></button>
-					<button type="button" id="list-view" class="btn btn-default active m-0 text-start" data-toggle="tooltip" title="" data-original-title="List"><i class="icon-list"></i></button>
-				</div>
-			</div>
-			<div class="col-12 col-md-11 category-list-grid">
-				@await Html.PartialAsync("~/Views/Panel/_ItemsOptions.cshtml")
-			</div>
-		</div>
-	</div>
-
-	<div class="category-row row">
-		@if (Model.Count() > 0)
-		{
-			@foreach (var product in Model)
-			{
-				<div class="product-layout product-list col-xs-12">
-					<div class="product-thumb">
-						<div class="image">
-							<a asp-action="GetProduct" asp-route-id="@product.Id" asp-route-returnUrl="@Context.Request.PathAndQuery()" class="thumb-image">
-								<img src="@product.Image" alt="@product.Name" class="img-responsive">
-							</a>
-						</div>
-						<div class="product-description">
-							<div class="caption">
-								<div class="title-rating clearfix">
-									<h4 class="product-title">
-										<a asp-action="GetProduct" asp-route-returnUrl="@Context.Request.PathAndQuery()" asp-route-id="@product.Id">@product.Name</a>
-									</h4>
-									<div class="rating">
-										<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-										<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-										<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-										<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-										<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-									</div>
-								</div>
-
-								<div class="price-cartbtn clearfix">
-									<p class="price">₴@product.Price</p>
-									<p class="description">@product.Description</p>
-									<button class="addcart" type="button">
-										<i class="icon-shopping-bag hidden"></i>
-										<span class="">
-											<a href="shopping-cart.html">Order Now</a>
-										</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			}
-		}
-	</div>
-
-	<div class="text-center">
-		@await Html.PartialAsync("_Pages", Model)
-	</div>
-</div>

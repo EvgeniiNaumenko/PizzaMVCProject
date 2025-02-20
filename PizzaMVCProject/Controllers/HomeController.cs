@@ -1,74 +1,123 @@
-using System.Diagnostics;
+п»їusing System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PizzaMVCProject.Data;
 using PizzaMVCProject.Interfaces;
 using PizzaMVCProject.Models;
 using PizzaMVCProject.Models.Pages;
 using PizzaMVCProject.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace PizzaMVCProject.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IProduct _products;
-        public HomeController(IProduct products)
+        private readonly ApplicationContext _context;
+        private readonly ICategory _categories;
+        public HomeController(IProduct product, ApplicationContext context, ICategory categories)
         {
-            _products = products;
+            _products = product;
+            _context = context;
+            _categories = categories;
         }
+
 
         [Route("/")]
         [HttpGet]
-        public IActionResult Index(QueryOptions options)
+        public async Task<IActionResult> Index(QueryOptions options, int categoryId)
         {
-            ViewBag.RoutAction = "/";
-            ViewBag.SortOptions = new SelectList(new List<SelectListItem>()
-        {
-            new SelectListItem() { Value = "Name", Text = "Название" },
-            new SelectListItem() { Value = "Price", Text = "Цена" },
-            new SelectListItem() { Value = "Weight", Text = "Вес" },
-        }, "Value", "Text", options.OrderPropertyName);
-            ViewBag.SearchOptions = new SelectList(new List<SelectListItem>()
-        {
-            new SelectListItem() { Value = "Name", Text = "Название" },
-            new SelectListItem() { Value = "Type", Text = "Тип" }
-        }, "Value", "Text", options.SearchPropertyName);
+            if (categoryId != 0)
+            {
+                ViewBag.CategoryId = categoryId;
 
-            var product = _products.GetAllProducts(options);
-            PagedList<ProductViewModel> pvm = new PagedList<ProductViewModel>(
-                product.Select(p => new ProductViewModel
+                var currentCategory = await _categories.GetCategoryAsync(categoryId);
+                if (currentCategory != null)
                 {
-                    Id = p.Id.ToString(),
-                    Name = p.Name,
-                    Price = p.Price,
-                    Image = p.Image
-                }).AsQueryable(), product.Options
-            );
+                    ViewData["Title"] = currentCategory.Name;
+                }
 
-            return View(pvm);
+                return View(_products.GetAllProductsByCategoryWithRatings(options, categoryId));
+
+            }
+            else
+            {
+                ViewData["Title"] = "ГѓГ«Г ГўГ­Г Гї";
+                return View(_products.GetAllProductsWithRelations(options));
+            }
         }
 
-        [Route("/product/{id}")]
-        [HttpGet]
-        public async Task<IActionResult> GetProduct(string id, string returnUrl = null)
-        {
-            Product? product = await _products.GetProductWithCategoryAsync(id);
-            if (product == null)
-                return NotFound();
 
-            ViewBag.ReturnUrl = returnUrl;
-            return View(new ProductViewModel()
+
+        [Route("/product")]
+        [HttpGet]
+        public async Task<IActionResult> GetProduct(int productId, string? returnUrl)
+        {
+            if (productId != 0)
             {
-                Id = product.Id.ToString(),
-                Name = product.Name,
-                Description = product.Description,
-                Image = product.Image,
-                Weight = product.Weight,
-                Calories = product.Calories,
-                Price = product.Price,
-                Brand = product.Brand,
-                Category = product.Category,
+                var currentProduct = await _products.GetProductWithCategoryAndRatingAsync(productId);
+                if (currentProduct != null)
+                {
+                    ViewBag.CategoryId = double.NaN;
+                    return View(new CurrentProductViewModel
+                    {
+                        Product = currentProduct,
+                        ReturnUrl = returnUrl
+                    });
+                }
+            }
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Rate(int productId, int rating)
+        {
+            var product = await _context.Products
+                .Include(p => p.Ratings)
+                .FirstOrDefaultAsync(p => p.Id == productId);
+
+            if (product == null)
+            {
+                return Json(new { success = false, message = "Product not found" });
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var existingRating = product.Ratings
+                .FirstOrDefault(r => r.UserId == userId);
+
+            if (existingRating != null)
+            {
+                existingRating.RatingValue = rating;
+                existingRating.RatedAt = DateTime.UtcNow;
+            }
+            else
+            {
+                product.Ratings.Add(new Rating
+                {
+                    ProductId = productId,
+                    UserId = userId,
+                    RatingValue = rating,
+                    RatedAt = DateTime.UtcNow
+                });
+            }
+
+            await _context.SaveChangesAsync();
+
+            var newAverage = product.Ratings.Any()
+                ? Math.Round(product.Ratings.Average(r => r.RatingValue), 1)
+                : 0;
+
+            return Json(new
+            {
+                success = true,
+                newRating = newAverage,
+                ratingCount = product.Ratings.Count
             });
         }
-
     }
 }

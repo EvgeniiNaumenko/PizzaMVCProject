@@ -16,10 +16,38 @@ namespace PizzaMVCProject.Repository
             _applicationContext = applicationContext;
         }
 
+        // =============  my new methods  =============
+        public PagedList<Product> GetAllProductsWithRelations(QueryOptions options)
+        {
+            var query = _applicationContext.Products
+                .Include(e => e.Category)
+                .Include(e => e.Ratings)
+                .AsQueryable();
+
+            return new PagedList<Product>(query, options);
+        }
+
+        //===========
+        // l3+
+        public async Task<IEnumerable<Product>> GetEightRandomProductsAsync(int productId)
+        {
+            return await _applicationContext.Products.Where(e => e.Id != productId).OrderBy(e => Guid.NewGuid()).Take(8).ToListAsync();
+        }
+
+        public PagedList<Product> GetAllProductsByCategoryWithRatings(QueryOptions options, int categoryId)
+        {
+            return new PagedList<Product>(_applicationContext.Products.Include(e => e.Category).Include(e => e.Ratings).Where(e => e.CategoryId == categoryId), options);
+        }
+        //===============================================
 
         public PagedList<Product> GetAllProducts(QueryOptions options)
         {
             return new PagedList<Product>(_applicationContext.Products.Include(e => e.Category), options);
+        }
+
+        public PagedList<Product> GetAllProductsByCategory(QueryOptions options, int categoryId)
+        {
+            return new PagedList<Product>(_applicationContext.Products.Include(e => e.Category).Where(e => e.CategoryId == categoryId), options);
         }
 
 
@@ -39,30 +67,30 @@ namespace PizzaMVCProject.Repository
 
         public async Task EditProductAsync(Product product)
         {
-            _applicationContext.Entry(product).State = EntityState.Modified;
+            _applicationContext.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _applicationContext.Entry(product).Property(e => e.DateOfPublication).IsModified = false;
             await _applicationContext.SaveChangesAsync();
         }
 
 
-        public async Task<Product?> GetProductAsync(string id)
+        public async Task<Product> GetProductAsync(int id)
         {
-            return await _applicationContext.Products.AsNoTracking().FirstOrDefaultAsync(e => e.Id.ToString() == id);
+            return await _applicationContext.Products.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
+        }
+        public async Task<Product> GetProductWithCategoryAsync(int id)
+        {
+            return await _applicationContext.Products.Include(e => e.Category).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<Product> GetProductWithCategoryAsync(string id)
+        public async Task<Product> GetProductWithCategoryAndRatingAsync(int id)
         {
-            return await _applicationContext.Products.Include(e => e.Category).AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Id.ToString() == id);
+            return await _applicationContext.Products.Include(e => e.Category).Include(e => e.Ratings).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<IEnumerable<Product>> GetSimilarProductsAsync(string categoryName)
-        {
-            return await _applicationContext.Products
-                .Where(p => p.Category.Name.Equals(categoryName))
-                .OrderBy(_ => Guid.NewGuid())
-                .Take(10)
-                .ToListAsync();
-        }
+
+
+
+
     }
+
 }

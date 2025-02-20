@@ -5,33 +5,23 @@ namespace PizzaMVCProject.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Введите емейл")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Не корректный емейл")]
-        [Display(Name = "Email")]
-        [Remote(action: "IsEmailInUse", controller: "Account", ErrorMessage = "Емейл адрес уже используется")]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
+        [StringLength(100, ErrorMessage = "Email must not exceed 100 characters.")]
         public string? Email { get; set; }
-
-        [Required(ErrorMessage = "Введите год рождения")]
-        [Display(Name = "Год рождения")]
-        [Range(1900, 2024, ErrorMessage = "Год рождения должен быть в диапазоне от 1900 до 2024")] // Пример валидации года
+        [Range(1900, 9999, ErrorMessage = "Year must be between 1900 and 9999.")]
         public int Year { get; set; }
-
-        [Required(ErrorMessage = "Введите номер телефона")]
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Номер телефона")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Номер телефона должен содержать 10 цифр")] // Пример валидации номера
+        [Phone(ErrorMessage = "Invalid Phone Number.")]
+        [StringLength(100, ErrorMessage = "Phone number must not exceed 100 characters.")]
         public string? Phone { get; set; }
-
-        [Required(ErrorMessage = "Введите пароль")]
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, ErrorMessage = "Password must be between 6 and 100 characters long.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
-        [StringLength(100, ErrorMessage = "Пароль должен содержать не менее 6 символов", MinimumLength = 6)] // Валидация длины пароля
         public string? Password { get; set; }
-
-        [Required(ErrorMessage = "Подтвердите пароль")]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [Required(ErrorMessage = "Confirm Password is required.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [StringLength(100, ErrorMessage = "Password confirmation must be between 6 and 100 characters long.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Подтвердить пароль")]
         public string? PasswordConfirm { get; set; }
     }
 }

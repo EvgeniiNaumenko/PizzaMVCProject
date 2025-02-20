@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     Layout = "_PanelLayout.cshtml";
     ViewData["Title"] = "Статистика";
 }
@@ -8,12 +8,8 @@
     <div class="breadcrumb-container clearfix">
         <h1 class="page-title">Панель управления</h1>
         <ul class="breadcrumb">
-            <li>
-                <a asp-action="Index" asp-controller="Panel">Главная</a>
-            </li>
-            <li>
-                <a asp-action="Statistics" asp-controller="Panel">Статистика</a>
-            </li>
+            <li><a asp-action="Index" asp-controller="Panel">Главная</a></li>
+            <li><a asp-action="Statistics" asp-controller="Panel">Статистика</a></li>
         </ul>
     </div>
 </div>

@@ -4,18 +4,21 @@ namespace PizzaMVCProject.ViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Введите емейл")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Не корректный емейл")]
+        [Required]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Not valid Email")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Введите пароль")]
+
+        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Password")]
         public string? Password { get; set; }
 
-        [Display(Name = "Запомнить?")]
+
+        [Display(Name = "Remember?")]
         public bool RememberMe { get; set; }
+
 
         public string? ReturnUrl { get; set; }
     }

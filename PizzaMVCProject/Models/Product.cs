@@ -11,10 +11,9 @@ namespace PizzaMVCProject.Models
         [Display(Name = "Предмет")]
         Subject
     }
-
     public class Product
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public float Weight { get; set; }
@@ -24,7 +23,22 @@ namespace PizzaMVCProject.Models
         public string? Image { get; set; }
         public ProductType Type { get; set; }
         public DateTime DateOfPublication { get; set; }
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+
+        // нав. свойство для оценок продукта
+        public List<Rating> Ratings { get; set; } = new List<Rating>();
+        // Сумма всех оценок
+        public int RatingSum => Ratings.Sum(r => r.RatingValue);
+
+        // Количество оценок
+        public int RatingCount => Ratings.Count;
+
+        // Средний рейтинг продукта
+        public double AverageRating => Ratings.Any()
+            ? Math.Round(Ratings.Average(r => r.RatingValue), 1)
+            : 0;
+
     }
 }

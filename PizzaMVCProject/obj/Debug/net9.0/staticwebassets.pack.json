@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\PizzaMVCProject.bundle.scp.css",
-      "PackagePath": "staticwebassets\\PizzaMVCProject.sl8xqqvs31.bundle.scp.css"
+      "PackagePath": "staticwebassets\\PizzaMVCProject.nat59dgge8.bundle.scp.css"
     },
     {
       "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\assets\\css\\bootstrap.min.css",
@@ -553,12 +553,16 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
-      "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Drink.png",
-      "PackagePath": "staticwebassets\\productFiles\\Drink.png"
+      "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\drink.png",
+      "PackagePath": "staticwebassets\\productFiles\\drink.png"
     },
     {
-      "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\Pizza.jpg",
-      "PackagePath": "staticwebassets\\productFiles\\Pizza.jpg"
+      "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\pizza.jpg",
+      "PackagePath": "staticwebassets\\productFiles\\pizza.jpg"
+    },
+    {
+      "Id": "D:\\ЖЕНЯ\\Обучение\\ITStep\\Lesson\\2025\\ASP.NET\\PizzaMVCProject\\PizzaMVCProject\\wwwroot\\productFiles\\salad.jpg",
+      "PackagePath": "staticwebassets\\productFiles\\salad.jpg"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.PizzaMVCProject.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

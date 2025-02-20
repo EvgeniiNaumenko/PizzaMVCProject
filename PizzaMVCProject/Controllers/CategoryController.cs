@@ -11,169 +11,180 @@ namespace PizzaMVCProject.Controllers
     [Authorize(Roles = "Admin,Editor")]
     public class CategoryController : Controller
     {
-        private readonly ICategory _categories;
-        public readonly IWebHostEnvironment _appEnvironment;
+        private readonly ICategory _category;
+        private readonly IWebHostEnvironment _environment;
 
-        public CategoryController(ICategory categories, IWebHostEnvironment appEnvironment)
+        public CategoryController(ICategory category, IWebHostEnvironment environment)
         {
-            _categories = categories;
-            _appEnvironment = appEnvironment;
+            _category = category;
+            _environment = environment;
         }
 
-        [Route("/panel/categories")]
+
         [HttpGet]
-        public IActionResult Index(QueryOptions options)
+        public async Task<IActionResult> Categories(QueryOptions options, string? search)
         {
-            ViewBag.RoutAction = "/panel/categories";
-            ViewBag.SortOptions = new SelectList(new List<SelectListItem>()
-        {
-            new SelectListItem() { Value = "Name", Text = "Название" },
-            new SelectListItem() { Value = "DateOfPublication", Text = "Дата публикации" },
-        }, "Value", "Text", options.OrderPropertyName);
-            ViewBag.SearchOptions = new SelectList(new List<SelectListItem>()
-        {
-            new SelectListItem() { Value = "Name", Text = "Name" },
-            new SelectListItem() { Value = "DateOfPublication", Text = "Дата публикации" },
-            new SelectListItem() { Value = "Description", Text = "Описание" }
-        }, "Value", "Text", options.SearchPropertyName);
+            IQueryable<Category> categories = _category.GetAll();
 
-            return View(_categories.GetAllCategories(options));
-        }
-
-        [Route("/panel/delete-category")]
-        [HttpDelete]
-        public async Task<IActionResult> DeleteCategory(string categoryId)
-        {
-            Category? category = await _categories.GetCategoryByIdAsync(categoryId);
-
-            if (category == null)
-                return BadRequest(new { message = $"Категория с Id: {categoryId} не найден" });
-
-            if (category.Image != null)
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                if (System.IO.File.Exists(_appEnvironment.WebRootPath + category.Image))
-                {
-                    System.IO.File.Delete(_appEnvironment.WebRootPath + category.Image);
-                }
+                search = search.ToLower();
+                categories = categories.Where(c => c.Name.ToLower().Contains(search));
             }
 
-            await _categories.DeleteCategoryAsync(category);
-            return Ok();
+            var pagedList = new PagedList<Category>(categories, options);
+            return View(pagedList);
         }
 
 
-        [Route("/panel/create-update-category")]
+        [Authorize(Roles = "Admin, Editor")]
         [HttpGet]
-        public async Task<IActionResult> CreateOrUpdateCategory(string? categoryId)
+        public IActionResult Create()
         {
-            if (!string.IsNullOrEmpty(categoryId))
-            {
-                Category? category = await _categories.GetCategoryByIdAsync(categoryId);
-                if (category != null)
-                {
-                    CreateOrUpdateCategoryViewModel cvm = new CreateOrUpdateCategoryViewModel()
-                    {
-                        Id = category.Id.ToString(),
-                        Name = category.Name,
-                        Description = category.Description,
-                        Image = category.Image
-                    };
-
-                    return View(cvm);
-                }
-                return NotFound();
-            }
-
-            return View(new CreateOrUpdateCategoryViewModel());
+            return View(new CategoryViewModel());
         }
 
-        [ValidateAntiForgeryToken]
-        [Route("/panel/create-update-category")]
+
+        [Authorize(Roles = "Admin, Editor")]
+        [AutoValidateAntiforgeryToken]
         [HttpPost]
-        public async Task<IActionResult> CreateOrUpdateCategory(CreateOrUpdateCategoryViewModel model)
+        public async Task<IActionResult> Create(CategoryViewModel model)
         {
-            if (string.IsNullOrEmpty(model.Id) && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (_categories.IsHasCategoryWithName(model.Name))
-                {
-                    ModelState.AddModelError("Name", "Категория с таким именем уже существует");
-                    return View(model);
-                }
-
-                string? fileImageName = null, imagePath = null;
-                if (model.File != null)
-                {
-                    fileImageName = model.File.FileName;
-
-                    if (fileImageName.Contains("\\"))
-                    {
-                        fileImageName = fileImageName.Substring(fileImageName.LastIndexOf('\\') + 1);
-                    }
-                    else if (fileImageName.Contains("/"))
-                    {
-                        fileImageName = fileImageName.Substring(fileImageName.LastIndexOf('/') + 1);
-                    }
-
-                    imagePath = "/categoryFiles/" + Guid.NewGuid() + fileImageName;
-
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + imagePath, FileMode.Create))
-                    {
-                        await model.File.CopyToAsync(fileStream);
-                    }
-                }
-
-                await _categories.CreateCategoryAsync(new Category()
+                var category = new Category
                 {
                     Name = model.Name,
                     Description = model.Description,
-                    Image = imagePath
-                });
+                    DateOfPublication = DateTime.Now
+                };
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                Category? category = await _categories.GetCategoryByIdAsync(model.Id);
-                if (category == null)
-                    return NotFound();
-
-                string? fileImageName = null, imagePath = null;
-                if (model.File != null)
+                if (model.ImageFile != null)
                 {
-                    if (System.IO.File.Exists(_appEnvironment.WebRootPath + model.Image))
-                    {
-                        System.IO.File.Delete(_appEnvironment.WebRootPath + model.Image);
-                    }
-
-                    fileImageName = model.File.FileName;
-
-                    if (fileImageName.Contains("\\"))
-                    {
-                        fileImageName = fileImageName.Substring(fileImageName.LastIndexOf('\\') + 1);
-                    }
-                    else if (fileImageName.Contains("/"))
-                    {
-                        fileImageName = fileImageName.Substring(fileImageName.LastIndexOf('/') + 1);
-                    }
-
-                    imagePath = "/categoryFiles/" + Guid.NewGuid() + fileImageName;
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + imagePath, FileMode.Create))
-                    {
-                        await model.File.CopyToAsync(fileStream);
-                    }
+                    category.Image = await SaveImageAsync(model.ImageFile);
                 }
-                else
+
+
+                await _category.AddAsync(category);
+                return RedirectToAction(nameof(Categories));
+            }
+
+            return View(model);
+        }
+
+
+        [Authorize(Roles = "Admin, Editor")]
+        //[ValidateAntiForgeryToken]    // <<-- TODO в JS скрипте добавить токен
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _category.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            if (!string.IsNullOrEmpty(category.Image))
+            {
+                var fullPath = Path.Combine(_environment.WebRootPath, category.Image);
+                if (System.IO.File.Exists(fullPath))
                 {
-                    imagePath = category.Image;
+                    System.IO.File.Delete(fullPath);
+                }
+            }
+
+            var result = await _category.DeleteAsync(id);
+            if (result)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
+
+
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var category = await _category.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            var ViewModel = new CategoryViewModel
+            {
+                Id = category.Id ?? 0, // тк Id Category может быть null ?
+                Name = category.Name,
+                Description = category.Description,
+                ExistingImage = string.IsNullOrEmpty(category.Image) ? null : $"/{category.Image}"
+            };
+
+            return View(ViewModel);
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var category = await _category.GetByIdAsync(model.Id);
+                if (category == null)
+                {
+                    return NotFound();
                 }
 
                 category.Name = model.Name;
                 category.Description = model.Description;
-                category.Image = imagePath;
-                await _categories.UpdateCategoryAsync(category);
 
-                return RedirectToAction("Index");
+                if (model.ImageFile != null)
+                {
+                    // удаляем старое изображение перед загрузкой нового
+                    await DeleteOldImageAsync(category.Image);
+                    category.Image = await SaveImageAsync(model.ImageFile);
+                }
+
+                await _category.EditAsync(category);
+                return RedirectToAction(nameof(Categories));
+            }
+            return View(model);
+        }
+
+
+
+        private async Task<string> SaveImageAsync(IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                return null;
+            }
+
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+            var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads", "categories");
+
+            Directory.CreateDirectory(uploadsFolder);
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+
+            return Path.Combine("uploads", "categories", uniqueFileName).Replace("\\", "/");
+        }
+
+        private async Task DeleteOldImageAsync(string? existingImagePath)
+        {
+            if (string.IsNullOrEmpty(existingImagePath)) return;
+
+            var fullPath = Path.Combine(_environment.WebRootPath, existingImagePath);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
             }
         }
+
     }
 }

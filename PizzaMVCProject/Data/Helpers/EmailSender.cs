@@ -2,24 +2,29 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 using PizzaMVCProject.Models;
+using PizzaMVCProject.ViewModels;
 
 namespace PizzaMVCProject.Data.Helpers
 {
     public class EmailSender
     {
+        //Зависимость которую зарегистрировали как Singleton объект
+        //в который получили настройки почты из файла appsettings.json
         private readonly EmailConfiguration _emailConfig;
-
         public EmailSender(EmailConfiguration emailConfig)
         {
             _emailConfig = emailConfig;
         }
-
         public bool SendResetPassword(string email, string link, string name)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Pizza Star", "pizzastarclient@gmail.com"));
+            //от кого отправляем и заголовок
+            message.From.Add(new MailboxAddress("Pizza Star", "enykoruna1@gmail.com"));
+            //кому отправляем
             message.To.Add(new MailboxAddress(name, email));
+            //тема письма
             message.Subject = "Ваша ссылка для сброса пароля на Pizza Star";
+            //тело письма
             message.Body = new TextPart("html")
             {
                 Text = $@"<html lang=""ru"">
@@ -34,16 +39,29 @@ namespace PizzaMVCProject.Data.Helpers
                         <table class=""body-wrap"">
                         <tr>
                         <td class=""container"">
+
+
+                            <!-- Message start -->
                             <table>
                                 <tr>
                                     <td align=""center"" class=""masthead"">
+
+
                                         <h1>Сброс пароля на Pizza Star</h1>
+
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class=""content"">
+
+
                                         <h2>Приветствую вас, {name}!</h2>
+
+
                                         <p>Как ваши дела сегодня?<br/>Недавно вы запросили сброс пароля для вашего аккаунта. Нажмите на кнопку ниже, чтобы продолжить.</p>
+
+
                                         <table>
                                             <tr>
                                                 <td align=""center"">
@@ -55,14 +73,22 @@ namespace PizzaMVCProject.Data.Helpers
                                         </table>
                                         <p>Если вы не запрашивали сброс пароля, пожалуйста, проигнорируйте это письмо или ответьте на него, чтобы сообщить нам об этом. 
                                         Эта ссылка на сброс пароля действительна только в течение <b>следующего часа.</b></p>
+                
                                         <p><em>– Pizza Star</em></p>
+
+
                                     </td>
                                 </tr>
                             </table>
+
+
                         </td>
                         </tr>
                         <tr>
                         <td class=""container"">
+
+
+                            <!-- Message start -->
                             <table>
                                 <tr>
                                     <td class=""content footer"" align=""center"">
@@ -71,21 +97,56 @@ namespace PizzaMVCProject.Data.Helpers
                                     </td>
                                 </tr>
                             </table>
+
+
                         </td>
                         </tr>
                         </table>
                         </body>
                         </html>"
+
+
             };
             return Send(message);
         }
+
+
+
+
+        public bool SendContactMessage(EmailContactFormViewModel model, string adminEmail)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(model.Name, model.Email));
+            message.To.Add(new MailboxAddress("Administrator", adminEmail));
+            message.Subject = "Новое сообщение с контактной формы";
+            message.Body = new TextPart("html")
+            {
+                Text = $@"<html>
+                <body>
+                    <h2>Новое сообщение от посетителя сайта</h2>
+                    <p><strong>Имя:</strong> {model.Name}</p>
+                    <p><strong>Email:</strong> {model.Email}</p>
+                    <p><strong>Телефон:</strong> {model.Phone}</p>
+                    <h3>Сообщение:</h3>
+                    <p>{model.Message}</p>
+                </body>
+                </html>"
+            };
+
+            return Send(message);
+        }
+
+
+
 
 
         private bool Send(MimeMessage message)
         {
             using (var client = new SmtpClient())
             {
+                //Указываем smtp сервер почты и порт
                 client.Connect(_emailConfig.SmtpServer, _emailConfig.Port, false);
+                //Указываем свой Email адрес и пароль приложения
                 client.Authenticate(_emailConfig.UserName, _emailConfig.Password);
                 try
                 {
@@ -101,8 +162,13 @@ namespace PizzaMVCProject.Data.Helpers
                     client.Disconnect(true);
                 }
             }
-
             return false;
         }
+
+
+
+
+
     }
+
 }

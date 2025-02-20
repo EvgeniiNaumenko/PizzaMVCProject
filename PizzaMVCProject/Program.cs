@@ -5,48 +5,66 @@ using PizzaMVCProject.Data.Helpers;
 using PizzaMVCProject.Interfaces;
 using PizzaMVCProject.Models;
 using PizzaMVCProject.Repository;
+using PizzaMVCProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
+// Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+// Install-Package Microsoft.EntityFrameworkCore.SqlServer 
+
+
 
 IConfigurationRoot _confString = new ConfigurationBuilder().
     SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
 
-builder.Services.AddDbContext<ApplicationContext>(opt => 
-        opt.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationContext>(options =>
+        options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
 
-//builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddIdentity<User, IdentityRole>(opt =>
+builder.Services.AddIdentity<User, IdentityRole>(opts =>
 {
-    opt.Password.RequiredLength = 5;
-    opt.Password.RequireNonAlphanumeric = false;
-    opt.Password.RequireLowercase = false;
-    opt.Password.RequireDigit = false;
-    opt.Password.RequireUppercase = false;
-}).AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+    opts.Password.RequiredLength = 3;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireDigit = false;
 
-//Парсинг конфигурации почты и добавление в сервисы
+    opts.Lockout.MaxFailedAccessAttempts = 5;
+    opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+
+
+})
+    .AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 var emailConfig = builder.Configuration
         .GetSection("EmailConfiguration")
         .Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig!);
 
-
-//Подключаем сервис для отправки почты
 builder.Services.AddScoped<EmailSender>();
 
+builder.Services.AddScoped<ICategory, CategoryRepository>();
 
-//Время существования токена, для восстановления пароля - 1 час.
 builder.Services.Configure<DataProtectionTokenProviderOptions>(opts => opts.TokenLifespan = TimeSpan.FromHours(1));
 
-
-builder.Services.AddScoped<ICategory, CategoryRepository>();
 builder.Services.AddScoped<IProduct, ProductRepository>();
 
+builder.Services.AddScoped(e => CartRepository.GetCart(e));
+
+builder.Services.AddTransient<IOrder, OrderRepository>();
+
+builder.Services.AddHttpClient<GoogleReCaptchaService>();
+
 var app = builder.Build();
+
+app.UseStatusCodePagesWithRedirects("/");
+
+app.UseSession();
+
 
 using (var scope = app.Services.CreateScope())
 {
@@ -55,26 +73,20 @@ using (var scope = app.Services.CreateScope())
     {
         var userManager = services.GetRequiredService<UserManager<User>>();
         var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-        var context = services.GetRequiredService<ApplicationContext>();
-        await DbInit.InitializeAsync(context, userManager, rolesManager);
-        // тут инициализация категорий
-       
-        await DbInit.CreateSeedDataAsync(context, categories: new string[] {"1", "2", "3"});
+
+
+        await DbInit.InitializeAsync(userManager, rolesManager);
+
+        var applicationContext = services.GetRequiredService<ApplicationContext>();
+        await DbInit.InitializeContentAsync(applicationContext);
+
+        await DbInit.CreateSeedDataAsync(applicationContext, categories: new int[] { 1, 2, 3 });
     }
     catch (Exception ex)
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
-}
-
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -89,6 +101,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();

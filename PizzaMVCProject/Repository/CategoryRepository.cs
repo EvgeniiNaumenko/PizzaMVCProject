@@ -9,38 +9,67 @@ namespace PizzaMVCProject.Repository
     public class CategoryRepository : ICategory
     {
         private readonly ApplicationContext _context;
-
         public CategoryRepository(ApplicationContext context)
         {
             _context = context;
         }
 
-        public PagedList<Category> GetAllCategories(QueryOptions options) =>
-            new PagedList<Category>(_context.Categories, options);
-
-        public async Task<IEnumerable<Category>> GetAllCategoriesAsync() => await _context.Categories.ToListAsync();
-
-        public async Task<Category?> GetCategoryByIdAsync(string id) =>
-            await _context.Categories.FirstOrDefaultAsync(e => e.Id.ToString() == id);
-
-        public async Task DeleteCategoryAsync(Category category)
+        public IQueryable<Category> GetAll()
         {
-            _context.Categories.Remove(category);
+            return _context.Categories;
+        }
+
+
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
+        {
+            return await _context.Categories.AsNoTracking().ToListAsync();
+        }
+
+        public PagedList<Category> GetAllCategories(QueryOptions options)
+        {
+            return new PagedList<Category>(_context.Categories, options);
+        }
+
+        public async Task<Category?> GetByIdAsync(int id)
+        {
+            return await _context.Categories.FindAsync(id);
+        }
+
+        public async Task AddAsync(Category category)
+        {
+            _context.Categories.Add(category);
             await _context.SaveChangesAsync();
         }
 
-        public async Task CreateCategoryAsync(Category category)
-        {
-            await _context.Categories.AddAsync(category);
-            await _context.SaveChangesAsync();
-        }
-
-        public bool IsHasCategoryWithName(string name) => _context.Categories.Any(e => e.Name.Equals(name));
-
-        public async Task UpdateCategoryAsync(Category category)
+        public async Task EditAsync(Category category)
         {
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
+            {
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await _context.Categories.AnyAsync(c => c.Id == id);
+        }
+
+
+        public async Task<Category?> GetCategoryAsync(int categoryId)
+        {
+            return await _context.Categories
+                                 .AsNoTracking()
+                                 .FirstOrDefaultAsync(c => c.Id == categoryId);
         }
 
     }

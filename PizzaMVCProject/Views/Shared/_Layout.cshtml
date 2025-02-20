@@ -1,23 +1,31 @@
-﻿<!DOCTYPE html>
+﻿﻿@using PizzaMVCProject.Interfaces
+@using PizzaMVCProject.Models
+@using PizzaMVCProject.Repository
+
+@inject ICategory _categories;
+@inject CartRepository _cart;
+
+@{
+    var allCategories = await _categories.GetAllCategoriesAsync();
+    var cartProductCount = await _cart.GetShopCartItemsCountAsync();
+}
+
+
+
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PizzaStar</title>
     <meta name="description" content="PizzaStar - Вкусная пица!">
-
-
-    <!-- Стили -->
     @await Html.PartialAsync("_StylesPartial")
-    <!-- / Стили -->
-
-
+    
 </head>
 <body class="homepage">
     <div class="loader"></div>
 
-
-    <!-- Header Область Начало -->
     <nav id="top">
         <div class="container">
             <div class="top-left">
@@ -67,9 +75,11 @@
             <div class="header-inner">
                 <div class="header-left">
                     <div id="logo">
-                        <a href="#">
+
+                        <a href="@Url.Action("Index", "Home")">
                             <img src="~/assets/images/logo-white.png" title="Your Store" alt="Your Store" class="img-responsive">
                         </a>
+
                     </div>
                 </div>
                 <div class="header-center">
@@ -93,311 +103,57 @@
 
                                         <span id="remove-themability_megamenu" class="fa fa-times"></span>
 
-
                                         <div class="themability_megamenu-pattern">
                                             <div class="container">
+
+                                                @*ВЫвод существующих категорий в меню хедера,  динамическ *@
                                                 <ul class="themability_megamenu" data-megamenuid="55" data-transition="slide" data-animationtime="500">
-
-
-                                                    <li class="home current-active active-first">
-                                                        <a href="#">
+                                                    <li class="home @(ViewBag.CategoryId is null ? "current-active active-first":"")">
+                                                        <a asp-controller="Home" asp-action="Index">
                                                             <span><strong> Главная </strong></span>
                                                         </a>
                                                     </li>
+                                                    @foreach (Category category in allCategories)
+                                                    {
+                                                        <li class="@(ViewBag.CategoryId == category.Id ? "current-active active-first":"")">
+                                                            <a asp-controller="Home" asp-action="Index" asp-route-categoryId="@category.Id" class="clearfix">
+                                                                <strong> @category.Name </strong>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    <li class="@(ViewBag.CategoryId == -1 ? "current-active active-first":"")">
+                                                        <p class="close-menu"></p>
+                                                        <a asp-controller="Home" asp-action="Contact">
+                                                            <span><strong> Контакты </strong></span>
+                                                        </a>
+                                                    </li>
 
 
+                                                    <!-- Pages dropdown Меню -->
                                                     <li class="with-sub-menu click">
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
                                                             <strong>
-                                                                Пицца
+                                                                Pages
                                                             </strong>
-
-
                                                             <b class="fa fa-angle-down"></b>
                                                         </a>
-
-
-                                                        <div class="sub-menu">
+                                                        <div class="sub-menu sub-menu-1-col" style="width: 250px;">
                                                             <div class="content">
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
-                                                                        <div class="categories hot">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Pasta</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Fedelini</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Lasagna</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Perciatelli</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">
-                                                                                                    french
-                                                                                                    fries
-                                                                                                </a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Sachets</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Ziti</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Rotelle</a>
-                                                                                                    </li>
-
-
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Drink</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">sosyo</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">coca-cola</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">
-                                                                                                            Cheddar
-                                                                                                            Cheese
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <ul class="route html-link">
+                                                                            <li><a asp-controller="Home" asp-action="Index" class="main-menu">About Us</a></li>
+                                                                            <li><a asp-controller="Contact" asp-action="Contact" class="main-menu">Contact Us</a></li>
+                                                                            <li><a asp-controller="Home" asp-action="Index" class="main-menu">Site Map</a></li>
+                                                                            <li><a asp-controller="Home" asp-action="Index" class="main-menu">Special</a></li>
+                                                                            <li><a asp-controller="Home" asp-action="Index" class="main-menu">My Account</a></li>
+                                                                            <li><a asp-controller="Home" asp-action="Index" class="main-menu">Order History</a></li>
+                                                                        </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
-
-
-                                                    <li class="with-sub-menu click">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>
-                                                                Салаты
-                                                            </strong>
-
-
-                                                            <b class="fa fa-angle-down"></b>
-                                                        </a>
-
-
-                                                        <div class="sub-menu">
-                                                            <div class="content">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="categories hot">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Pasta</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Fedelini</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Lasagna</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Perciatelli</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">
-                                                                                                    french
-                                                                                                    fries
-                                                                                                </a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Sachets</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Ziti</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Rotelle</a>
-                                                                                                    </li>
-
-
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Drink</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">sosyo</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">coca-cola</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">
-                                                                                                            Cheddar
-                                                                                                            Cheese
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-
-                                                    <li class="with-sub-menu click">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">
-                                                            <strong>
-                                                                Напитки
-                                                            </strong>
-
-
-                                                            <b class="fa fa-angle-down"></b>
-                                                        </a>
-
-
-                                                        <div class="sub-menu">
-                                                            <div class="content">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="categories hot">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Pasta</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Fedelini</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Lasagna</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Perciatelli</a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">
-                                                                                                    french
-                                                                                                    fries
-                                                                                                </a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">Sachets</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Ziti</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">Rotelle</a>
-                                                                                                    </li>
-
-
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-3 static-menu">
-                                                                                    <div class="menu">
-                                                                                        <ul>
-                                                                                            <li>
-                                                                                                <a href="#" class="main-menu">Drink</a>
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        <a href="#">sosyo</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">coca-cola</a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a href="#">
-                                                                                                            Cheddar
-                                                                                                            Cheese
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-
-                                                    <li>
-                                                        <p class="close-menu"></p>
-                                                        <a href="" class="clearfix">
-                                                            <strong>
-                                                                Контакты
-                                                            </strong>
-                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -412,9 +168,11 @@
                 </div>
                 <div class="header-right">
                     <div class="search-content">
+
                         <div class="search-btn-outer hidden-lg hidden-md">
                             <i class="fa fa-search"></i>
                         </div>
+
                         <div class="header-search">
                             <div id="themabilitySearch" class="input-group themability-search">
                                 <input type="text" name="search" value="" placeholder="Поиск..." class="form-control input-lg ui-autocomplete-input" />
@@ -424,22 +182,24 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="cart-content">
-                        <div id="cart" class="btn-group btn-block">
-                            <button type="button" data-toggle="dropdown" data-loading-text="<i class='fa fa-spinner fa-spin' aria-hidden='true'></i>"
-                                    class="btn btn-inverse btn-block btn-lg dropdown-toggle">
-                                <i class="fa fa-shopping-cart"></i> <span id="cart-total">2</span>
-                            </button>
 
-
+                        <div class="cart-btn-container">
+                            <a asp-controller="ShopCart" asp-action="Index" class="btn btn-cart btn-block btn-lg">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span id="cartProductNumber">
+                                    @(cartProductCount <= 0 ? 0 : cartProductCount)
+                                </span>
+                            </a>
                         </div>
                     </div>
-
-
                     <div id="header_ac" class="dropdown">
                         <a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-user"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
                         </a>
+
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <ul class="dropdown-menu dropdown-menu-right account-link-toggle">
@@ -480,15 +240,9 @@
 
 
     </header>
-    <!-- Header Область Конец -->
-
-
     <div class="container-full ">
         @RenderBody()
     </div>
-
-
-    <!-- Footer Область Начало -->
     <footer>
         <div class="container">
             <div class="footer-top">
@@ -511,8 +265,6 @@
                                         <div class="contact_site">+38 (097) 060-14-78</div>
                                     </div>
                                 </li>
-
-
                                 <li>
                                     <div class="email">
                                         <div class="contact_title"><i class="fa fa-envelope"></i></div>
@@ -529,13 +281,28 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+
+
                         <h5 class="toggled">Меню</h5>
+
                         <ul class="list-unstyled">
-                            <li><a href="#" class="contact_site">Главная</a></li>
-                            <li><a href="#" class="contact_site">Пицца</a></li>
-                            <li><a href="#" class="contact_site">Салаты</a></li>
-                            <li><a href="#" class="contact_site">Напитки</a></li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Главная</a>
+                            </li>
+                            @foreach (Category category in allCategories)
+                            {
+                                <li>
+                                    <a asp-controller="Home" asp-action="Index" asp-route-categoryId="@category.Id">
+                                        @category.Name
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a asp-controller="Home" asp-action="Contact">Контакты</a>
+                            </li>
                         </ul>
+
+
                     </div>
                     <div class="col-md-3">
                         <h5 class="toggled">Дополнительно</h5>
@@ -575,20 +342,7 @@
             <p class="copyright"><a href="index.html#"></a>© 2023 PizzaStar - Все права защищены.</p>
         </div>
     </footer>
-    <!-- Footer Область Конец -->
-    <!-- Скрипты -->
-    <!-- Секция для подгрузки скриптов из других представлений -->
     @await RenderSectionAsync("Scripts", required: false)
-    <!-- Секция для подгрузки основных скриптов из частичного представления -->
     @await Html.PartialAsync("_ScriptsPartial")
-    <!-- / Скрипты -->
-
-
 </body>
 </html>
-
-
-
-
-
-
